@@ -1,1 +1,0 @@
-print("Hello world","Soovib Reten",sep="\n")
