@@ -32,6 +32,13 @@ def positive_or_negative(num_a: int) -> str:
     :return "negative", "positive" or "zero" depending on the given integer.
     """
     # your code goes here
+    if num_a < 0:
+        return "negative"
+    elif num_a == 0:
+        return "zero"
+    else:
+        return "positive"
+
 
 def is_in_string(letter: str, word: str) -> bool:
     """
@@ -45,6 +52,10 @@ def is_in_string(letter: str, word: str) -> bool:
     :return: boolean depending on if given letter is in given word.
     """
     # your code goes here
+    if letter in word:
+        return True
+    elif letter not in word:
+        return False
 
 
 def are_same_length(str_a: str, str_b: str) -> bool:
@@ -59,6 +70,10 @@ def are_same_length(str_a: str, str_b: str) -> bool:
     :return boolean True or False.
     """
     # your code goes here
+    if len(str_a) == len(str_b):
+        return True
+    elif len(str_a) != len(str_b):
+        return False
 
 
 def is_letter_or_digit(symbol: str) -> str:
@@ -73,6 +88,12 @@ def is_letter_or_digit(symbol: str) -> str:
     :return "letter", "digit" or "other".
     """
     # your code goes here
+    if symbol.isalpha():
+        return "letter"
+    elif symbol.isdigit():
+        return "digit"
+    else:
+        return "other"
 
 
 def are_last_symbols_same(str_a: str, str_b: str) -> bool:
@@ -87,6 +108,10 @@ def are_last_symbols_same(str_a: str, str_b: str) -> bool:
     :return boolean.
     """
     # your code goes here
+    if str_a[-1:] == str_b[-1:]:
+        return True
+    else:
+        return False
 
 
 def hundred(num_a: int) -> int:
@@ -101,6 +126,11 @@ def hundred(num_a: int) -> int:
     :return int.
     """
     # your code goes here
+    if num_a <= 100:
+        return 100 - num_a
+    else:
+        return num_a % 100
+
 
 if __name__ == "__main__":
     assert are_equal(12, 13) == "not equal"
@@ -110,4 +140,20 @@ if __name__ == "__main__":
     assert positive_or_negative(0) == "zero"
     assert positive_or_negative(-12) == "negative"
 
-    print("OK")
+    assert is_in_string("a", "car") == True
+    assert is_in_string("b", "car") == False
+
+    assert are_same_length("aa", "bb") == True
+    assert are_same_length("a", "bb") == False
+
+    assert is_letter_or_digit("a") == "letter"
+    assert is_letter_or_digit("1") == "digit"
+    assert is_letter_or_digit("?") == "other"
+
+    assert are_last_symbols_same("car", "bar") == True
+    assert are_last_symbols_same("bird", "car") == False
+
+    assert hundred(45) == 55
+    assert hundred(100) == 0
+    assert hundred(110) == 10
+    print("Kõik töötab")
