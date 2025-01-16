@@ -36,6 +36,6 @@ def sum_unlimited():
 
 
 if __name__ == "__main__":
-  #  sum_ten_for()
-  #  sum_ten_while()
+    sum_ten_for()
+    sum_ten_while()
     sum_unlimited()
