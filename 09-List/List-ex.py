@@ -50,7 +50,7 @@ def get_middle_part_of_list(elements: list) -> list:
     get_middle_part_of_list([1, 3, 6, 7]) => [3, 6]
     get_middle_part_of_list(["a", "b", "b", "a"]) => ["b", "b"]
     """
-    pass
+    return elements[1:len(elements) - 1]
 
 
 def create_new_list_with_added_number(numbers: list, number: int) -> list:
@@ -60,7 +60,8 @@ def create_new_list_with_added_number(numbers: list, number: int) -> list:
     Do not modify the existing list.
     create_new_list_with_added_number([1, 2, 3], 4) => [1, 2, 3, 4]
     """
-    pass
+    numbers.insert(-1, number)
+    return numbers
 
 
 def swap_edge_elements(elements: list) -> list:
@@ -76,7 +77,8 @@ def swap_edge_elements(elements: list) -> list:
     swap_edge_elements(["foo", "bar", "pub"]) => ["pub", "bar", "foo"]
 
     """
-    pass
+    elements[0], elements[-1] = elements[-1], elements[0]
+    return elements
 
 
 def add_element_in_position(elements: list, new_element: any, position: int) -> list:
@@ -90,7 +92,8 @@ def add_element_in_position(elements: list, new_element: any, position: int) -> 
     add_element_in_position([1], 9, 0) => [9, 1]
     add_element_in_position([1], 9, 1) => [1, 9]
     """
-    pass
+    elements.insert(position, new_element)
+    return elements
 
 
 def get_repeated_list(elements: list, repetiton: int) -> list:
@@ -101,7 +104,7 @@ def get_repeated_list(elements: list, repetiton: int) -> list:
     get_repeated_list([1], 5) => [1, 1, 1, 1, 1]
     get_repeated_list([1, 2], 0) => []
     """
-    pass
+    return elements * repetiton
 
 
 def remove_first_element_from_list(elements: list) -> None:
@@ -115,7 +118,7 @@ def remove_first_element_from_list(elements: list) -> None:
     remove_first_element_from_list(x)
     x => [2, 3]
     """
-    pass
+    return elements.pop(0)
 
 
 def reverse_list(elements: list) -> list:
@@ -125,4 +128,10 @@ def reverse_list(elements: list) -> list:
     reverse_list([1, 2, 3]) => [3, 2, 1]
     reverse_list(["a", "b"]) => ["b", "a"]
     """
-    pass
+    elements.reverse()
+    return elements
+
+
+if __name__ == "__main__":
+    elements = [1, 2, 3, 4, 5, 6, 7, 8]
+    print(get_middle_element_of_list(elements))
