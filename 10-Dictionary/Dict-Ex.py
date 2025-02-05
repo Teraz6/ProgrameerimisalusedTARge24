@@ -18,7 +18,10 @@ def get_hobbies(hobbies_dict: dict, name: str) -> list:
 
     :return: List of hobbies of the person with given name or "name not in dictionary".
     """
-    # your code goes here
+    if name in hobbies_dict:
+        return hobbies_dict[name]
+    else:
+        return "name not in dictionary"
 
 
 def find_tallest(height_dict: dict) -> str:
@@ -30,7 +33,8 @@ def find_tallest(height_dict: dict) -> str:
     :param height_dict: dictionary with peoples' names and heights
     :return name of tallest person in given dict.
     """
-    # your code goes here
+    tallest = max(height_dict, key=height_dict.get)
+    return tallest
 
 
 def remove_sixes(six_dict: dict) -> dict:
@@ -42,7 +46,7 @@ def remove_sixes(six_dict: dict) -> dict:
     :param six_dict: dictionary to be modified.
     :return: dict without values that are dividable by six.
     """
-    # your code goes here
+    return {key: value for key, value in six_dict.items() if value % 6 != 0}
 
 
 def exchange_keys_and_values(exchange_dict: dict) -> dict:
@@ -54,7 +58,7 @@ def exchange_keys_and_values(exchange_dict: dict) -> dict:
     :param exchange_dict: dictionary to be modified.
     :return dictionary where values and keys have been exchanged.
     """
-    # your code goes here
+    return {value: key for key, value in exchange_dict.items()}
 
 
 def count_symbol_appearances(stringy: str) -> dict:
@@ -66,7 +70,13 @@ def count_symbol_appearances(stringy: str) -> dict:
     :param stringy: string to be processed.
     :return: dictionary with symbol counts.
     """
-    # your code goes here
+    symbol_count = {}
+    for char in stringy:
+        if char in symbol_count:
+            symbol_count[char] += 1
+        else:
+            symbol_count[char] = 1
+    return symbol_count
 
 
 def organise_by_first_symbol(strings: list) -> dict:
@@ -79,4 +89,12 @@ def organise_by_first_symbol(strings: list) -> dict:
     :param strings: list of strings.
     :return: dict with starting symbol and corresponding words in order of appearance.
     """
-    # your code goes here
+    result = {}
+
+    for word in strings:
+        first_char = word[0]
+        if first_char not in result:
+            result[first_char] = []
+        result[first_char].append(word)
+
+    return result
