@@ -45,3 +45,42 @@ Faili delta_vaibad.txt sisu:
 3.63
 5
 """
+
+def calculate_carpet_length(carpet_length, five_plus_carpet_thread_count, five_minus_carpet_thread_count):
+    single_thread_length = float((carpet_length * 1.2) + 0.5)
+    total_thread_length = 0
+    combined_thread_length = 0
+
+    if carpet_length >= 5.0:
+        total_thread_length = single_thread_length * five_plus_carpet_thread_count
+
+    else:
+        total_thread_length = single_thread_length * five_minus_carpet_thread_count
+
+    combined_thread_length += round(total_thread_length, 2)
+    print(f"{round(total_thread_length, 2)}")
+    return combined_thread_length
+
+
+def thread_needed(combined_thread_length):
+    print(f"Kõigi vaipade peale läheb vaja {combined_thread_length} meetrit lõimeniiti.")
+
+
+def open_file():
+    filename = input("Sisesta faili nimi koos laiendusega(.txt): ")
+    five_plus_carpet_thread_count = input("Sisestage 5-meetriste ja pikemate vaipade lõimede arv: ")
+    five_minus_carpet_thread_count = input("Sisestage lühemate vaipade lõimede arv: ")
+    five_plus_carpet_thread_count = float(five_plus_carpet_thread_count)
+    five_minus_carpet_thread_count = float(five_minus_carpet_thread_count)
+    combined_thread_length = 0
+
+    with open(filename, "r") as f:
+        for line in f:
+            carpet_length = float(line.strip())
+            combined_thread_length += calculate_carpet_length(carpet_length, five_plus_carpet_thread_count, five_minus_carpet_thread_count)
+
+        thread_needed(combined_thread_length)
+
+
+if __name__ == "__main__":
+    open_file()
