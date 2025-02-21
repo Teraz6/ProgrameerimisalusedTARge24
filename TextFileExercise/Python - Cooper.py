@@ -70,6 +70,7 @@ def calculate_grade(distance, gender):
             print(f"{gender} {distance} m, rahuldav, järgmisest hindest on puudu {2600 - distance}m")
 
 def average_grade(results):
+
     m_distance = 0
     m_count = 0
     n_distance = 0
@@ -84,16 +85,18 @@ def average_grade(results):
             n_count += 1
 
     print("Keskmised:")
+    m_result = None
+    n_result = None
 
     if m_count > 0:
-        m_avg = m_distance / m_count
-        m_avg = round(m_avg)
-        print(calculate_grade(m_avg, "M"))
+        m_avg = round(m_distance / m_count)
+        m_result = f"M {m_avg} m, {calculate_grade(m_avg, 'M')}"
 
     if n_count > 0:
-        n_avg = n_distance / n_count
-        n_avg = round(n_avg)
-        return calculate_grade(n_avg, "N")
+        n_avg = round(n_distance / n_count)
+        n_result = f"N {n_avg} m, {calculate_grade(n_avg, 'N')}"
+
+    return m_result, n_result
 
 
 def read_data_from_file():
