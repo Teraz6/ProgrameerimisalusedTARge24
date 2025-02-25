@@ -24,6 +24,8 @@ Programm peab
 ja nende keskmise (ümardatuna kahe kümnendkohani pärast koma).
 o	Kui normatiivi täitjaid ei ole, siis keskmist ei arvutata ega väljastata.
 """
+import sys
+
 """
 Näide programmi tööst
 Faili kaugus.txt sisu:
@@ -58,3 +60,33 @@ Tegelikud tulemused
 Normatiivi täitis 3.
 Täitnute keskmine on 6.73.
 """
+
+def correct_distance(wrong_distance, fix_in_metres):
+    actual_distance = round(wrong_distance + fix_in_metres, 2)
+    return actual_distance
+
+
+def open_file():
+    filename = input("Sisestage failinimi: ")
+    fix_in_centimetres = float(input("Sisestage parandus sentimeetrites: "))
+    normative_in_metres = float(input("Sisestage normatiiv meetrites: "))
+    fix_in_metres = round(float(fix_in_centimetres * 0.01),2)
+
+    with open(filename) as f:
+        print("Tegelikud tulemused:")
+        normative_count = 0
+        normative_total_in_metres = 0
+        actual_distance = 0
+        for line in f:
+            wrong_distance = float(line.strip())
+            actual_distance = correct_distance(wrong_distance, fix_in_metres)
+            if actual_distance >= normative_in_metres:
+                normative_count += 1
+                normative_total_in_metres += actual_distance
+            print(actual_distance)
+        print(f"Normatiivi täitis {normative_count} võistlejat.")
+        print(f"Täitnute keskmine on {round(normative_total_in_metres / normative_count, 2)}.")
+
+
+if __name__ == "__main__":
+    open_file()
