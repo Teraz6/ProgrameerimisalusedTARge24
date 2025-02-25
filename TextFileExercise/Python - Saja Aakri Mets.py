@@ -32,3 +32,27 @@ Faili andmed.txt sisu:
 2.05
 1.58
 """
+
+def calculate_forest_area(forest_area, yearly_growth):
+    forest_area = forest_area * 0.4047
+    total_growth = forest_area + yearly_growth
+    return round(total_growth, 1)
+
+
+def open_file():
+    filename = input("Sisestage faili nimi: ")
+    yearly_growth = float(input("Sisestage aastane juurdekasv hektari kohta: "))
+    suitable_area_size = float(input("Sisestage piir, mitmest aakrist suuremad metsatükid arvesse võtta: "))
+
+    with open(filename) as f:
+        for line in f:
+            forest_area = float(line.strip())
+            if forest_area > suitable_area_size:
+                total_growth = calculate_forest_area(forest_area, yearly_growth)
+                print(f"Metsatükki aastane juurde kasv on {total_growth} hektarit.")
+            else:
+                print("Metsatükki ei võeta arvesse")
+
+
+if __name__ == "__main__":
+    open_file()
