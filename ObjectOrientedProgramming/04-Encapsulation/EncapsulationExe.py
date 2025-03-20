@@ -30,3 +30,18 @@ class Student:
     def get_status(self):
         """Get student status."""
         return self.__status
+
+
+""" Teine variant seda teha. """
+class Student:
+    """Represent student with name, id and status."""
+    STATUS_ACTIVE = "Active"
+    STATUS_EXPELLED = "Expelled"
+    STATUS_FINISHED = "Finished"
+    STATUS_INACTIVE = "Inactive"
+    STATUSES = [STATUS_ACTIVE, STATUS_EXPELLED, STATUS_FINISHED, STATUS_INACTIVE]
+
+    def __init__(self, name: str, student_id: int):
+        self.__name = name
+        self.__id = student_id
+        self.__status = Student.STATUS_ACTIVE
